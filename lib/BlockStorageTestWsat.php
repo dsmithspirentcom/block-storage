@@ -121,7 +121,7 @@ class BlockStorageTestWsat extends BlockStorageTest {
       '&nbsp;&nbsp;SS Rounds' => '',
       'Pre Condition 2' => 'None',
       '&nbsp;&nbsp;TOIO - TC/QD ' => '',
-      '&nbsp;&nbsp;SS Rouds ' => '',
+      '&nbsp;&nbsp;SS Rounds ' => '',
       'Notes' => ''
     );
   }

@@ -1,0 +1,109 @@
+    1  sudo apt update
+    2  clear
+    3  sudo apt update
+    4  sudo apt upgrade
+    5  sudo apt install openssh-server
+    6  sudo ufw default deny incoming
+    7  sudo ufw default allow outgoing
+    8  sudo ufw allow ssh
+    9  sudo ufw enable
+   10  sudo reboot
+   11  ifconfig
+   12  tmux a
+   13  ls
+   14  ./run-tests.sh 
+   15  sudo ./run-tests.sh
+   16  lsblk -l
+   17  lsblk -l | grep sda
+   18  sudo ./run-tests.sh
+   19  exit
+   20  clear
+   21  exit
+   22  sudo apt update
+   23  sudo apt upgrade
+   24  clear
+   25  sudo apt-get -y install gnuplot php5-cli util-linux zip make autoconf libtool gettext libgconf2-dev libncurses5-dev python-dev libaio-dev libaio1 build-essential git autoconf libtool gettext libgconf2-dev libncurses5-dev python-dev
+   26  sudo apt install software-properties-common
+   27  sudo add-apt-repository ppa:ondrej/php
+   28  php -v
+   29  sudo apt update
+   30  sudo apt-get install php7.2 php7.2-cli php7.2-common
+   31  sudo apt-get install php7.2-curl php7.2-gd php7.2-json php7.2-mbstring php7.2-intl php7.2-mysql php7.2-xml php7.2-zip
+   32  php --version
+   33  history
+   34  mkdir
+   35  ls
+   36  cd Desktop/
+   37  ls
+   38  mkdir history
+   39  cd history/
+   40  history > history_13-10-2020_21-51.txt
+   41  ls
+   42  cat history_13-10-2020_21-51.txt 
+   43  sudo apt install fio
+   44  fio --version
+   45  sudo apt install util-linux
+   46  which blkdisgard
+   47  apt-get install util-linux
+   48  sudo apt-get install util-linux
+   49  blkdiscard
+   50  which blkdiscard
+   51  clear
+   52  cd ..
+   53  ls
+   54  cd ../Downloads/
+   55  ls
+   56  wget https://github.com/wkhtmltopdf/packaging/releases/download/0.12.6-1/wkhtmltox_0.12.6-1.xenial_amd64.deb
+   57  ls
+   58  sudo dpkg -i wkhtmltox_0.12.6-1.xenial_amd64.deb 
+   59  sudo apt -f install
+   60  sudo dpkg -i wkhtmltox_0.12.6-1.xenial_amd64.deb 
+   61  clear
+   62  cd ../Desktop/history/
+   63  cat history_13-10-2020_21-57.txt 
+   64  history > history_13-10-2020_21-57.txt 
+   65  ls
+   66  ls -l
+   67  sudo apt install dos2unix
+   68  cd ../block-storage/
+   69  find . -type f -print0 | xargs -0 dos2unix
+   70  clear
+   71  ls
+   72  lsblk -l
+   73  mount | grep ' \ '
+   74  mount | grep ' / '
+   75  ls
+   76  chmod +x *.sh
+   77  ls
+   78  cd lib/
+   79  ls
+   80  chmod +x run.php save.php
+   81  ls
+   82  cd ..
+   83  ls
+   84  ./run.sh 
+   85  ls
+   86  cat run-tests.sh 
+   87  clear
+   88  cat run-tests.sh 
+   89  nano run-tests.sh 
+   90  clear
+   91  tmux
+   92  sudo apt install tmux
+   93  cler
+   94  clear
+   95  tmux
+   96  sudo reboot
+   97  ls
+   98  cd Desktop/
+   99  ls
+  100  cd block-storage/
+  101  ls
+  102  sudo ./run-tests.sh 
+  103  clear
+  104  ps aux | grep fio
+  105  ps aux | grep php
+  106  php --version
+  107  cd ../history/
+  108  ls
+  109  history > history_13-10-2020_22-16.txt

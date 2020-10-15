@@ -962,8 +962,12 @@ abstract class BlockStorageTest {
       
       // remove temporary directory
       if (is_dir($tdir) && strpos($tdir, $dir) === 0 && preg_match('/[0-9]$/', $tdir)) {
+        /*
         exec(sprintf('rm -rf %s', $tdir));
         print_msg(sprintf('Removed temporary directory %s', $tdir), $verbose, __FILE__, __LINE__);
+        */
+        // NOTE: Skipped removal of temporary directory, to allow creation of reports whilst investigating issues with report generation
+        print_msg(sprintf('*** SKIPPED REMOVAL OF TEMPORARY DIRECTORY ***'), $verbose, __FILE__, __LINE__);
       }
     }
     else print_msg(sprintf('Unable to generate reports in directory %s - it either does not exist or is not writable', $dir), $verbose, __FILE__, __LINE__, TRUE);
@@ -1715,16 +1719,47 @@ abstract class BlockStorageTest {
         // try ATA secure erase
         if ($this->deviceTargets && !$nosecureerase) {
           print_msg(sprintf('Attempting ATA secure erase for target %s', $target), $this->verbose, __FILE__, __LINE__);
-          $cmd = sprintf('hdparm --user-master u --security-erase "%s" %s >/dev/null 2>&1; echo $?', $this->options['secureerase_pswd'], $target);
+          // Secure erase drive using procedure from https://ata.wiki.kernel.org/index.php/ATA_Secure_Erase
+          // 1) Check drive security is not frozen
+          $cmd = sprintf('hdparm -I %s | grep frozen | grep not >/dev/null 2>&1; echo $?', $target);
           $ecode = trim(exec($cmd));
-          if ($ecode > 0) print_msg(sprintf('ATA secure erase not supported or failed for target %s', $target), $this->verbose, __FILE__, __LINE__);
-          else {
-            print_msg(sprintf('ATA secure erase successful for target %s', $target), $this->verbose, __FILE__, __LINE__);
-            $this->purgeMethods[$target] = 'secureerase';
-            $purged = TRUE;
+          if ($ecode == 0)
+          {
+            // 2a) Enable ATA security with user supplied password
+            $cmd = sprintf('hdparm --user-master u --security-set-pass "%s" %s >/dev/null 2>&1; echo $?', $this->options['secureerase_pswd'], $target);
+            $ecode = trim(exec($cmd));
+            if ($ecode == 0)
+            {
+              // 2b) Check drive security is now enabled
+              $cmd = sprintf('hdparm -I %s | grep enabled | grep not >/dev/null 2>&1; echo $?', $target);
+              $ecode = trim(exec($cmd));
+              if ($ecode == 1)
+              {
+                // 3) Perform secure erase
+                $cmd = sprintf('hdparm --user-master u --security-erase "%s" %s >/dev/null 2>&1; echo $?', $this->options['secureerase_pswd'], $target);
+                $ecode = trim(exec($cmd));
+                if ($ecode == 0)
+                {
+                  // 4) Check drive security is now disabled (best indicator that secure erase succeeded)
+                  $cmd = sprintf('hdparm -I %s | grep enabled | grep not >/dev/null 2>&1; echo $?', $target);
+                  $ecode = trim(exec($cmd));
+                  if ($ecode == 0)
+                  {
+                    // ATA secure erase was successful
+                    print_msg(sprintf('ATA secure erase successful for target %s', $target), $this->verbose, __FILE__, __LINE__);
+                    $this->purgeMethods[$target] = 'secureerase';
+                    $purged = TRUE;
+                  }
+                }
+              }
+            }
+          }
+          if (!$purged)
+          {
+            print_msg(sprintf('ATA secure erase not supported or failed for target %s', $target), $this->verbose, __FILE__, __LINE__);
           }
         }
-        else print_msg(sprintf('ATA secure erase not be attempted for %s because %s', $target, $nosecureerase ? '--nosecureerase argument was specified (or implied due to lack of --secureerase_pswd argument)' : 'it is not a device'), $this->verbose, __FILE__, __LINE__);
+        else print_msg(sprintf('ATA secure erase not attempted for %s because %s', $target, $nosecureerase ? '--nosecureerase argument was specified (or implied due to lack of --secureerase_pswd argument)' : 'it is not a device'), $this->verbose, __FILE__, __LINE__);
 
         // next try TRIM
         // if (!$purged && !$rotational && !$notrim) {
@@ -1740,8 +1775,8 @@ abstract class BlockStorageTest {
           }
         }
         else if (!$purged) print_msg(sprintf('TRIM not attempted for target %s because %s', $target, $notrim ? '--notrim argument was specified' : 'device is rotational'), $this->verbose, __FILE__, __LINE__);
-	
-	// next try sanitize 
+        
+        // next try sanitize 
         if (!$purged && !$nosanitize && $bsd ) {
           $cmd = sprintf("camcontrol sanitize %s -y -a block", $target);
           print_msg(sprintf('Attempting Sanitize for volume %s using command %s', $volume, $cmd), $this->verbose, __FILE__, __LINE__);

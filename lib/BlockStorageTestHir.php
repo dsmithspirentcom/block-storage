@@ -167,7 +167,7 @@ class BlockStorageTestHir extends BlockStorageTest {
       '&nbsp;&nbsp;SS Rounds' => $this->wdpc !== NULL ? sprintf('%d - %d', $this->wdpcComplete - 4, $this->wdpcComplete) : 'N/A',
       'Pre Condition 2' => 'None',
       '&nbsp;&nbsp;TOIO - TC/QD ' => '',
-      '&nbsp;&nbsp;SS Rouds' => ''
+      '&nbsp;&nbsp;SS Rounds' => ''
     );
   }
   

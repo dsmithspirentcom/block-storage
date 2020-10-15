@@ -235,7 +235,7 @@ class BlockStorageTestThroughput extends BlockStorageTest {
         '&nbsp;&nbsp;Duration' => $this->wipc ? sprintf('%dX %s Capacity%s', $this->options['precondition_passes'], $this->deviceTargets ? 'Device' : 'Volume', $this->options['active_range'] < 100 ? ' (' . $this->options['active_range'] . '% AR)' : '') : 'N/A',
         'Pre Condition 2' => isset($this->subtests['128k']) ? 'SEQ 128K W' : 'None',
         '&nbsp;&nbsp;TOIO - TC/QD ' => isset($this->subtests['128k']) ? sprintf('TC %d/QD %d', count($this->options['target']), $this->options['oio_per_thread']) : '',
-        '&nbsp;&nbsp;SS Rouds' => $this->subtests['128k']->wdpc !== NULL ? sprintf('%d - %d', $this->subtests['128k']->wdpcComplete - 4, $this->subtests['128k']->wdpcComplete) : 'N/A',
+        '&nbsp;&nbsp;SS Rounds' => $this->subtests['128k']->wdpc !== NULL ? sprintf('%d - %d', $this->subtests['128k']->wdpcComplete - 4, $this->subtests['128k']->wdpcComplete) : 'N/A',
         'Notes' => $this->subtests['128k']->wdpc === FALSE ? sprintf('SS NOT ACHIEVED', $this->subtests['128k']->wdpcComplete) : ''
       );
     }

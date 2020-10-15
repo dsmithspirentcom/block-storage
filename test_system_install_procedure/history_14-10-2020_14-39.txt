@@ -1,0 +1,251 @@
+    1  sudo apt update
+    2  clear
+    3  sudo apt update
+    4  sudo apt upgrade
+    5  sudo apt install openssh-server
+    6  sudo ufw default deny incoming
+    7  sudo ufw default allow outgoing
+    8  sudo ufw allow ssh
+    9  sudo ufw enable
+   10  sudo reboot
+   11  ifconfig
+   12  tmux a
+   13  ls
+   14  ./run-tests.sh 
+   15  sudo ./run-tests.sh
+   16  lsblk -l
+   17  lsblk -l | grep sda
+   18  sudo ./run-tests.sh
+   19  exit
+   20  clear
+   21  exit
+   22  sudo apt update
+   23  sudo apt upgrade
+   24  clear
+   25  sudo apt-get -y install gnuplot php5-cli util-linux zip make autoconf libtool gettext libgconf2-dev libncurses5-dev python-dev libaio-dev libaio1 build-essential git autoconf libtool gettext libgconf2-dev libncurses5-dev python-dev
+   26  sudo apt install software-properties-common
+   27  sudo add-apt-repository ppa:ondrej/php
+   28  php -v
+   29  sudo apt update
+   30  sudo apt-get install php7.2 php7.2-cli php7.2-common
+   31  sudo apt-get install php7.2-curl php7.2-gd php7.2-json php7.2-mbstring php7.2-intl php7.2-mysql php7.2-xml php7.2-zip
+   32  php --version
+   33  history
+   34  mkdir
+   35  ls
+   36  cd Desktop/
+   37  ls
+   38  mkdir history
+   39  cd history/
+   40  history > history_13-10-2020_21-51.txt
+   41  ls
+   42  cat history_13-10-2020_21-51.txt 
+   43  sudo apt install fio
+   44  fio --version
+   45  sudo apt install util-linux
+   46  which blkdisgard
+   47  apt-get install util-linux
+   48  sudo apt-get install util-linux
+   49  blkdiscard
+   50  which blkdiscard
+   51  clear
+   52  cd ..
+   53  ls
+   54  cd ../Downloads/
+   55  ls
+   56  wget https://github.com/wkhtmltopdf/packaging/releases/download/0.12.6-1/wkhtmltox_0.12.6-1.xenial_amd64.deb
+   57  ls
+   58  sudo dpkg -i wkhtmltox_0.12.6-1.xenial_amd64.deb 
+   59  sudo apt -f install
+   60  sudo dpkg -i wkhtmltox_0.12.6-1.xenial_amd64.deb 
+   61  clear
+   62  cd ../Desktop/history/
+   63  cat history_13-10-2020_21-57.txt 
+   64  history > history_13-10-2020_21-57.txt 
+   65  ls
+   66  ls -l
+   67  sudo apt install dos2unix
+   68  cd ../block-storage/
+   69  find . -type f -print0 | xargs -0 dos2unix
+   70  clear
+   71  ls
+   72  lsblk -l
+   73  mount | grep ' \ '
+   74  mount | grep ' / '
+   75  ls
+   76  chmod +x *.sh
+   77  ls
+   78  cd lib/
+   79  ls
+   80  chmod +x run.php save.php
+   81  ls
+   82  cd ..
+   83  ls
+   84  ./run.sh 
+   85  ls
+   86  cat run-tests.sh 
+   87  clear
+   88  cat run-tests.sh 
+   89  nano run-tests.sh 
+   90  clear
+   91  tmux
+   92  sudo apt install tmux
+   93  cler
+   94  clear
+   95  tmux
+   96  sudo reboot
+   97  ls
+   98  cd Desktop/
+   99  ls
+  100  cd block-storage/
+  101  ls
+  102  tail -f test_log.txt 
+  103  exit
+  104  ls
+  105  cd Desktop/
+  106  ls
+  107  cd block-storage/
+  108  ls
+  109  sudo ./run-tests.sh 
+  110  clear
+  111  ps aux | grep fio
+  112  ps aux | grep php
+  113  php --version
+  114  cd ../history/
+  115  ls
+  116  history > history_13-10-2020_22-16.txt
+  117  ls
+  118  ls -l
+  119  clear
+  120  ls
+  121  cd ../block-storage/
+  122  ls
+  123  sudo ./run-tests.sh > test_log.txt
+  124  clear
+  125  ls
+  126  rm test_log.txt 
+  127  nano run-tests.sh 
+  128  cp run-tests.sh run-tests-with-logging.sh 
+  129  nano run-tests-with-logging.sh 
+  130  ls
+  131  nano run-tests-with-logging.sh 
+  132  sudo ./run-tests-with-logging.sh 
+  133  clear
+  134  ls
+  135  nano run-tests.sh 
+  136  ls
+  137  sudo reboot
+  138  ls
+  139  Desktop
+  140  ls
+  141  cd Desktop/block-storage/
+  142  ls
+  143  cp test_log.txt test_log.txt.copy
+  144  ls
+  145  nano test_log.txt.copy 
+  146  ls
+  147  tmux a
+  148  sudo apt-get -y install gnuplot util-linux zip make autoconf libtool gettext libgconf2-dev libncurses5-dev python-dev libaio-dev libaio1 build-essential git autoconf libtool gettext libgconf2-dev libncurses5-dev python-dev
+  149  clear
+  150  tmux
+  151  ls
+  152  cd Desktop/
+  153  ls
+  154  cd block-storage/
+  155  ls
+  156  cat test_log.txt 
+  157  lsblk -l | grep sda
+  158  exit
+  159  ls
+  160  cd Desktop/
+  161  ls
+  162  cd block-storage/
+  163  ls
+  164  cat test_log.txt 
+  165  exit
+  166  ps aux | grep fio
+  167  ps aux | grep php
+  168  exit
+  169  tmux a
+  170  tmux
+  171  ps aux | grep php
+  172  ps aux | grep fio
+  173  exit
+  174  ls
+  175  cd Desktop/block-storage/
+  176  ls
+  177  cd results/
+  178  ls
+  179  cd samsung_850_evo/
+  180  ls
+  181  cat iops.json 
+  182  cat fio-iops.json 
+  183  clear
+  184  exit
+  185  ls
+  186  cd Desktop/block-storage/
+  187  ls
+  188  tail -f test_log.txt 
+  189  exit
+  190  tmux a
+  191  ps aux | grep fio
+  192  ps aux | grep php
+  193  exit
+  194  ls
+  195  cd Desktop/
+  196  ls
+  197  cd block-storage/
+  198  ls
+  199  cd retained_test_logs/
+  200  ls
+  201  vi test_log_850_evo_1.txt 
+  202  ls
+  203  cd ..
+  204  ls
+  205  exit
+  206  tmux a
+  207  exit
+  208  cd /media
+  209  ls
+  210  cd user
+  211  ls
+  212  cd d3c5c39e-00c7-428c-b673-187127a871ba/
+  213  ls
+  214  chown -R user:user .
+  215  exit
+  216  tmux a
+  217  ls
+  218  lsblk -l
+  219  ls
+  220  cd Desktop/
+  221  ls
+  222  cd block-storage/
+  223  ls
+  224  cat run-tests-with-logging.sh 
+  225  exit
+  226  sudo apt-get install gparted
+  227  sudo apt install shred
+  228  shred --version
+  229  shred --help
+  230  clear
+  231  ls
+  232  cd /media/
+  233  ls
+  234  cd user
+  235  ls
+  236  cd Elements/
+  237  ls
+  238  ls -l
+  239  tail -f rsync_log.txt 
+  240  exit
+  241  history
+  242  ls
+  243  cd Desktop/history/
+  244  ls
+  245  ls -l
+  246  rm history_13-10-2020_21*.txt
+  247  ls
+  248  cat history_13-10-2020_22-16.txt 
+  249  history
+  250  clear
+  251  history > history_14-10-2020_14-39.txt
